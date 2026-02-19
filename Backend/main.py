@@ -9,7 +9,7 @@ import uvicorn
 app = FastAPI(debug=True)
 
 origins = [
-    "http://localhost:5173",
+    # "http://localhost:5173",
     "https://swasti-ai-alpha.vercel.app/"
     # Add more origins here
 ] 
