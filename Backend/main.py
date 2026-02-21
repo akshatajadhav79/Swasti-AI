@@ -9,8 +9,14 @@ from sentry_sdk import HttpTransport
 import uvicorn
 from pymongo import MongoClient
 from datetime import datetime
+from dotenv import load_dotenv
+import os
 
-client = MongoClient("mongodb+srv://akshata542003:Akshata05@cluster0.pe4etq7.mongodb.net/")
+load_dotenv()
+
+MONGO_DB = os.getenv("MONGO_DB")
+
+client = MongoClient(MONGO_DB)
 db = client["Swasti-AI"]
 chat_collection = db["prompt"]
 
