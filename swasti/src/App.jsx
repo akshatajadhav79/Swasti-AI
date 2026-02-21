@@ -1,19 +1,24 @@
-import { useState, useEffect } from "react";
+import React from "react";
 import "./index.css";
-import Ans from "../src/components/Ans"
+import Ans from "../src/components/Ans";
+import { Link, Routes, Route } from "react-router-dom";
+import { PreviewChat } from "./components/PreviewChat";
 
 function App() {
   return (
     <div className="h-screen flex bg-gray-100 ">
       <div className="w-64 bg-gray-900 text-white flex flex-col sidebar-glow">
-        <div className="p-4 text-xl font-semibold border-b border-gray-700">Swasti</div>
+        <div className="p-4 text-xl font-semibold border-b border-gray-700">
+          Swasti
+        </div>
         <div className="flex-1 overflow-y-auto p-4 space-y-2">
-          <div className="p-2 bg-gray-800 rounded cursor-pointer hover:shadow-lg hover:shadow-indigo-500/40 transition">
+          <Link to="/" className="block p-2 bg-gray-800 rounded hover:shadow-lg hover:shadow-indigo-500/40 transition">
             New Chat
-          </div>
-          <div className="p-2 hover:bg-gray-800 rounded cursor-pointer hover:shadow-lg hover:shadow-indigo-500/40 transition">
-            Previous Chat 
-          </div>
+          </Link>
+
+          <Link to="/previewChat" className="block p-2 bg-gray-800 rounded hover:shadow-lg hover:shadow-indigo-500/40 transition">
+            Preview Chat
+          </Link>
         </div>
       </div>
 
@@ -23,9 +28,11 @@ function App() {
         </div>
 
         <div className="flex-1 overflow-y-auto p-6 space-y-4">
-          <Ans/>
+          <Routes>
+            <Route path="/" element={<Ans />} />
+            <Route path="/previewChat" element={<PreviewChat/>} />
+          </Routes>
         </div>
-         
       </div>
     </div>
   );
