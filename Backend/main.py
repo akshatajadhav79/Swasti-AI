@@ -38,12 +38,6 @@ class ChatRequest(BaseModel):
 class ChatResponse(BaseModel):
     reply:str
     
-memory_DB = {"info":"hi"}
-
-@app.get("/chat",response_model = ChatResponse)
-def get_res():
-    return ChatResponse(reply = memory_DB["info"])
-
 
 @app.get("/chat/history")
 def get_chat_history():
