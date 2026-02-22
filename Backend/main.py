@@ -1,11 +1,8 @@
-from email import message
-from sys import exception
 from typing import List
 from fastapi import FastAPI, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
 import ollama
 from pydantic import BaseModel
-from sentry_sdk import HttpTransport
 import uvicorn
 from pymongo import MongoClient
 from datetime import datetime
