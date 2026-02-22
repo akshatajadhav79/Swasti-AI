@@ -8,14 +8,24 @@ from pymongo import MongoClient
 from datetime import datetime
 from dotenv import load_dotenv
 import os
-
-load_dotenv()
+import certifi
 
 MONGO_DB = os.getenv("MONGO_DB")
 
-client = MongoClient(MONGO_DB)
+if not MONGO_DB:
+    raise ValueError("MONGO_DB is not set in .env file")
+
+client = MongoClient(
+    MONGO_DB,tls=True,
+    tlsCAFile=certifi.where()
+    )
+client.server_info()
+
 db = client["Swasti-AI"]
 chat_collection = db["prompt"]
+
+print("MongoDB connected successfully")
+
 
 app = FastAPI(debug=True)
 
