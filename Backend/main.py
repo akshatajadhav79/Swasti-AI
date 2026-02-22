@@ -47,6 +47,7 @@ def get_res():
 
 @app.get("/chat/history")
 def get_chat_history():
+    print("MONGO_DB VALUE:", MONGO_DB)
     chats = chat_collection.find().sort("created_at",1)
     result = []
     for chat in chats:
