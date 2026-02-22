@@ -109,7 +109,7 @@ def add_fruits(fruit:Fruit):
 
 
 # To check api deployement successful
-@app.get("/")
+@app.get("/AI")
 async def health_care():
     return "The Health check is successful!"
 
