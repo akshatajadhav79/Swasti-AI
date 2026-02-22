@@ -20,8 +20,9 @@ chat_collection = db["prompt"]
 app = FastAPI(debug=True)
 
 origins = [
-    "*"
-    "http://localhost:5173",
+    "*",
+    "https://swasti-ai-alpha.vercel.app/",
+    # "http://localhost:5173",
     # "https://swasti-kvyh43984-akshata-jadhav-s-projects.vercel.app/"
     # Add more origins here
 ] 
