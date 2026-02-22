@@ -11,6 +11,7 @@ from pymongo import MongoClient
 from datetime import datetime
 from dotenv import load_dotenv
 import os
+from mangum import Mangum
 
 load_dotenv()
 
@@ -22,7 +23,10 @@ chat_collection = db["prompt"]
 
 app = FastAPI(debug=True)
 
+handler = Mangum(app)
+
 origins = [
+    "*"
     "http://localhost:5173",
     # "https://swasti-kvyh43984-akshata-jadhav-s-projects.vercel.app/"
     # Add more origins here
