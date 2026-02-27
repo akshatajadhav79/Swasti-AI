@@ -10,16 +10,20 @@ from dotenv import load_dotenv
 import os
 import certifi
 
+# Load .env file
+load_dotenv()
 MONGO_DB = os.getenv("MONGO_DB")
+print(MONGO_DB)
 
 if not MONGO_DB:
     raise ValueError("MONGO_DB is not set in .env file")
 
 client = MongoClient(
-    MONGO_DB,tls=True,
+    MONGO_DB,
+    tls=True,
     tlsCAFile=certifi.where()
     )
-client.server_info()
+# print(client.server_info())
 
 db = client["Swasti-AI"]
 chat_collection = db["prompt"]
@@ -30,7 +34,9 @@ print("MongoDB connected successfully")
 app = FastAPI(debug=True)
 
 origins = [
-    "https://swasti-ai-alpha.vercel.app",
+    # "https://swasti-ai-alpha.vercel.app",
+    "*",
+    # "http://localhost:5173"
 ] 
 app.add_middleware(
     CORSMiddleware,
